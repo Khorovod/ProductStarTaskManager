@@ -1,12 +1,13 @@
 ﻿using ProductStarTaskManager.Repos;
+using ProductStarTaskManager.Tasks;
 
 namespace ProductStarTaskManager.Managers
 {
-    internal class OnDatabaseTaskManager : ITaskManager
+    internal class InDatabaseTaskManager : ITaskManager
     {
         private readonly InMemoryRepository _repository;
 
-        public OnDatabaseTaskManager(InMemoryRepository repository)
+        public InDatabaseTaskManager(InMemoryRepository repository)
         {
             _repository = repository;
         }

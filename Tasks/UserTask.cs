@@ -1,5 +1,4 @@
-﻿
-namespace ProductStarTaskManager
+﻿namespace ProductStarTaskManager.Tasks
 {
     internal class UserTask
     {

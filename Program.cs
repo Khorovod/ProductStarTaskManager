@@ -1,14 +1,13 @@
-﻿using ProductStarTaskManager;
-using ProductStarTaskManager.Managers;
+﻿using ProductStarTaskManager.Managers;
 using ProductStarTaskManager.Repos;
-
-
+using ProductStarTaskManager.Tasks;
 
 string connectionString = "in-memory";
+
 var repo = RepositoryFactory.GetRepository(connectionString);
 var manager = ManagerFactory.GetManager(repo);
+var taskBuilder = TaskBuilderFactory.GetTaskBuilder(repo);
 
-int _id = 1;
 const string create = "создать";
 const string delete = "удалить";
 const string update = "изменить";
@@ -48,18 +47,13 @@ while (true)
         case create:
             Console.WriteLine("---Введите описание: ");
             var taskText = Console.ReadLine();
-            var task = new UserTask
-            {
-                Id = _id++,
-                TaskText = taskText,
-                CreationDate = DateTime.Now,
-                Done = false,
-            };
+            var task = taskBuilder.CreateTask(taskText);
 
             manager.Create(task);
-
             Console.WriteLine("---Задача создана!" + Environment.NewLine + Environment.NewLine);
             break;
+
+
         case delete:
             Console.WriteLine("---Введите номер задачи для удаления: ");
             var number = Console.ReadLine();
@@ -74,6 +68,8 @@ while (true)
                 Console.WriteLine("---Ошибка при удалении задачи!" + Environment.NewLine + Environment.NewLine);
             }
             break;
+
+
         case update:
             Console.WriteLine("---Введите номер задачи для редактирования: ");
             number = Console.ReadLine();
@@ -86,6 +82,8 @@ while (true)
             manager.Edit(task);
             Console.WriteLine("---Задача изменена!" + Environment.NewLine + Environment.NewLine);
             break;
+
+
         case done:
             Console.WriteLine("---Введите номер задачи для выполнения: ");
             number = Console.ReadLine();
@@ -95,6 +93,8 @@ while (true)
             manager.Complete(task);
             Console.WriteLine("---Задача выполнена!" + Environment.NewLine + Environment.NewLine);
             break;
+
+
         default:
             Console.WriteLine("---Некорректный ввод!" + Environment.NewLine + Environment.NewLine);
             break;

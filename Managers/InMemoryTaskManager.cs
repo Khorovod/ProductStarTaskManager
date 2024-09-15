@@ -1,4 +1,6 @@
-﻿namespace ProductStarTaskManager.Managers
+﻿using ProductStarTaskManager.Tasks;
+
+namespace ProductStarTaskManager.Managers
 {
     internal class InMemoryTaskManager : ITaskManager
     {

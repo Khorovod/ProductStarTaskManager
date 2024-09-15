@@ -1,4 +1,6 @@
-﻿namespace ProductStarTaskManager.Repos
+﻿using ProductStarTaskManager.Tasks;
+
+namespace ProductStarTaskManager.Repos
 {
     internal interface IRepository
     {
