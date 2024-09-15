@@ -5,11 +5,11 @@ namespace ProductStarTaskManager.Managers
 {
     internal class InDatabaseTaskManager : ITaskManager
     {
-        private readonly InMemoryRepository _repository;
+        private readonly string _connectionString;
 
-        public InDatabaseTaskManager(InMemoryRepository repository)
+        public InDatabaseTaskManager(string connectionString)
         {
-            _repository = repository;
+            _connectionString = connectionString;
         }
 
         public bool Complete(UserTask task)
